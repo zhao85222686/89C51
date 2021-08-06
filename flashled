@@ -1,0 +1,33 @@
+#include <reg52.h>
+#include <intrins.h>
+
+#define uchar unsigned char
+#define uint unsigned int
+
+uchar temp=0;
+uint i=0;
+uint j=0;
+
+void  ready(uint i)
+{
+	uchar a,b;
+	for(;i>0;i--)
+		for(a=102;a>0;a--)
+			for(b=3;b>0;b--);
+}
+
+void  main()
+{
+	temp=0x7f;
+	for	(j=8;j>0;j--)
+	{
+		P1=temp;
+		for(i=8;i>0;i--)	//循环
+		{
+			ready(300);
+			temp=_cror_(temp,1);
+			P1=temp;
+		}
+		temp=temp/2;
+	}
+}
