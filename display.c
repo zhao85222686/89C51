@@ -13,7 +13,7 @@ void delay(uint i)
 	uchar a,b;
 	for(;i>0;i--)
 	  for(b=102;b>0;b--)
-        for(a=3;a>0;a--);
+            for(a=3;a>0;a--);
 }
 
 uchar code flashdisplay[]=		//显示数字
@@ -24,10 +24,10 @@ uchar code flashdisplay[]=		//显示数字
 		 0x4f,  //3
 		 0x66,  //4
 		 0x6D,  //"5"
-         0x7D,  //"6"
-         0x07,  //"7"
-         0x7F,  //"8"
-         0x6F   //"9"
+        	 0x7D,  //"6"
+       		 0x07,  //"7"
+        	 0x7F,  //"8"
+       		 0x6F   //"9"
 };
 
 uchar code flashsite[]=		//显示数码管位置
@@ -48,8 +48,8 @@ void show (uint i)	 //设置数字为万位以内的数
 	ge = i%10;
 	shi = (i/10)%10;
 	bai = (i/100)%10;
-	qian = (1/1000)%10;
-	wan = 1/10000;
+	qian = (i/1000)%10;
+	wan = i/10000;
 
 	P0 =flashsite[3];		   //万位
 	WE = 1;	 
@@ -95,6 +95,7 @@ void show (uint i)	 //设置数字为万位以内的数
 
 void main ()
 {
-	show(500);
-
+	uint i;
+	for(i=50000;i>0;i--)
+	show(i);
 }
